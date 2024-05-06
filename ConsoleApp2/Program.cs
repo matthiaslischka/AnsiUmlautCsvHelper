@@ -4,12 +4,8 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 
-var csvConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture)
-{
-    Encoding = Encoding.Default
-};
-
-using var reader = new StreamReader("AnsiWithUmlaut.csv", Encoding.Default);
+var csvConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture);
+using var reader = new StreamReader("AnsiWithUmlaut.csv", Encoding.Latin1);
 using var csv = new CsvReader(reader, csvConfiguration);
 var records = csv.GetRecords<CsvDto>();
 Console.ReadLine();
